@@ -14,7 +14,9 @@ String head() {
 }
 
 String tail() {
-  return "</body>\r\n</html>\r\n";
+  String res = "<p><a href=\"/reset\">Reset</a></p>";
+  res += "</body>\r\n</html>\r\n";
+  return res;
 }
 
 void sendResult(String &resp) {
@@ -122,12 +124,20 @@ void handleSet() {
   sendResult(head() + formBody() + statusBody() + "<p>sent command</p>\r\n" + tail());
 }
 
+void handleReset() {
+  sendResult(head() + formBody() + statusBody() + "<p>reset started</p>\r\n" + tail());
+  clearSettings();
+  ESP.eraseConfig();
+  ESP.reset();  
+}
+
 
 void initServer() {
   // Start the server
   server.on("/", HTTP_GET, handleIndex);
   server.on("/", HTTP_POST, handleSet);
   server.on("/switch", HTTP_GET, handleSet);
+  server.on("/reset", HTTP_GET, handleReset);
   server.begin();
   serverSetupDone = true;
   Serial.print("Server started on ");

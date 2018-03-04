@@ -9,6 +9,7 @@ struct header {
 };
 
 struct header expectedHeader = {0xEAEA, 1};
+struct header invalidHeader = {0, 0};
 
 void printSettings() {
   Serial.println("Settings:");
@@ -43,10 +44,18 @@ void readSettings() {
   }
 }
 
-void writeSettings() {
-  EEPROM.put(0, expectedHeader);
+void writeSettings(bool invalid) {
+  if (invalid) {
+    EEPROM.put(0, invalidHeader);
+  }
+  else {
+    EEPROM.put(0, expectedHeader);
+  }
   EEPROM.put(sizeof(struct header), settings);
   EEPROM.commit();
 }
 
-
+void clearSettings() {
+  defaultSettings();
+  writeSettings(true);
+}
