@@ -9,14 +9,18 @@ const uint8 NUM_MODES = 10;
 
 #define TITEL "Markise"
 
+const char HTTP_HEAD1[] PROGMEM = "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\"/>\r\n<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">\r\n<title>" TITEL "</title>\r\n";
+const char HTTP_STYLE[] PROGMEM = "<style> .c{text-align:center;}div,input{padding:5px;font-size:1em;}input{width:55%;}body{text-align:center;font-family:verdana;}button{border:0;border-radius:0.3rem;background-color:#1fa3ec;color:#fff;line-height:2.4rem;font-size:1.2rem;width:100%;} .q{float:right;width:64px;text-align:right;} </style>";;
+const char HTTP_HEAD2[] PROGMEM = "</hread>\r\n<body>\r\n";
+
 String head() {
-  return "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">\r\n<title>" TITEL "</title>\r\n</hread>\r\n<body>\r\n";
+  return String(HTTP_HEAD1) + String(HTTP_STYLE) + String(HTTP_HEAD2);
 }
 
+const char HTTP_TAIL[] PROGMEM = "<p><a href=\"/reset\">Reset</a></p> </body>\r\n</html>\r\n";
+
 String tail() {
-  String res = "<p><a href=\"/reset\">Reset</a></p>";
-  res += "</body>\r\n</html>\r\n";
-  return res;
+return String(HTTP_TAIL);
 }
 
 void sendResult(String &resp) {
