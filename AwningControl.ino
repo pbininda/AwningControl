@@ -30,11 +30,12 @@ void loop() {
 void setup() {
   Serial.begin(115200);
   Serial.println();
+  Serial.println("initializing WIFI\r\n");
+  initWiFi();
+  Serial.println("WIFI initialized\r\n");
   readSettings();
   initState();
   initRelais();
-  Serial.println("initializing WIFI\r\n");
-  initWiFi();
 }
 
 
