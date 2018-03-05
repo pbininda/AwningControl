@@ -1,7 +1,10 @@
 #include <ESP8266WebServer.h>
+#include <ArduinoJson.h>
 #include "HTTP.h"
 #include "state.h"
 #include "persistence.h"
+#include "index.h"
+
 
 ESP8266WebServer server(80);
 bool serverSetupDone = false;
@@ -25,6 +28,10 @@ return String(HTTP_TAIL);
 
 void sendResult(String &resp) {
   server.send(200, "text/html", resp);
+}
+
+void sendJsonResult(String resp) {
+  server.send(200, "application/json", resp);
 }
 
 String statusBody() {
@@ -122,6 +129,23 @@ void handleIndex() {
   sendResult(head() + formBody() + statusBody() + tail());
 }
 
+String index() {
+  String res(HTTP_MAIN);
+  res.replace("{{?state.open_on?}}", state.open_on ? "\"checked\"" : "");
+  res.replace("{{?state.close_on?}}", state.close_on ? "\"checked\"" : "");
+  res.replace("{{state.open_on}}", state.open_on ? "on" : "off");
+  res.replace("{{state.close_on}}", state.close_on ? "on" : "off");
+  res.replace("{{settings.max_on_duration_ms}}", String(settings.max_on_duration_ms));
+  res.replace("{{state.tick}}", String(state.tick));
+  res.replace("{{state.now}}", String(state.now));
+  return res;
+}
+
+void handleSpa() {
+  extractArgs();
+  String indexData = index();
+  sendResult(indexData);
+}
 
 void handleSet() {
   extractArgs();
@@ -135,10 +159,56 @@ void handleReset() {
   ESP.reset();  
 }
 
+void handleApiGet() {
+  DynamicJsonBuffer jsonBuffer;
+  JsonObject &jsRoot = jsonBuffer.createObject();
+  JsonObject &jsState = jsRoot.createNestedObject("state");  
+  JsonObject &jsSettings = jsRoot.createNestedObject("settings");  
+  jsState["openOn"] = state.open_on;
+  jsState["closeOn"] = state.close_on;
+  jsState["tick"] = state.tick;
+  jsState["now"] = state.now;
+  jsSettings["maxOnDurationMs"] = settings.max_on_duration_ms;
+  String jsonString;
+  jsRoot.printTo(jsonString);
+  // Serial.println(jsonString);
+  sendJsonResult(jsonString);
+}
+
+void handleApiPost() {
+  DynamicJsonBuffer jsonBuffer;
+  String jsonString(server.arg("plain"));
+  // Serial.print("POST: ");
+  // Serial.println(jsonString);
+  JsonObject &root = jsonBuffer.parseObject(jsonString);
+  if (root.success()) {
+    Serial.println("root success");
+    JsonObject &jsState = root["state"];
+    JsonObject &jsSettings = root["settings"];
+    if (jsState["closeOn"]) {
+      trigger_close(0);
+    }
+    else if (jsState["openOn"]) {
+      trigger_open(0);
+    }
+    else {
+      cancel_open();
+      cancel_close();
+    }
+    uint32_t maxOn = jsSettings["maxOnDurationMs"];
+    if (maxOn != 0) {
+      settings.max_on_duration_ms = maxOn;
+    }
+  }
+  sendJsonResult("\"OK\"");
+}
 
 void initServer() {
   // Start the server
   server.on("/", HTTP_GET, handleIndex);
+  server.on("/spa", HTTP_GET, handleSpa);
+  server.on("/api", HTTP_GET, handleApiGet);
+  server.on("/api", HTTP_POST, handleApiPost);
   server.on("/", HTTP_POST, handleSet);
   server.on("/switch", HTTP_GET, handleSet);
   server.on("/reset", HTTP_GET, handleReset);
