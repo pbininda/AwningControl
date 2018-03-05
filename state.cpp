@@ -21,6 +21,8 @@ void initState() {
   cancel_open();
   cancel_close();
   state.now = millis();
+  state.last_close_on_time = state.now;
+  state.last_open_on_time = state.now;
   state.tick = 0;
 }
 

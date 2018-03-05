@@ -11,6 +11,8 @@ extern struct state {
   time_t open_off_time;
   time_t close_off_time;
   time_t now;
+  time_t last_open_on_time;
+  time_t last_close_on_time;
   uint16_t tick;
 } state;
 
