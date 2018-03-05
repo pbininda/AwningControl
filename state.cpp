@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "state.h"
 
-#define MAX_ON_DURATION_MS 20000
+#define MAX_ON_DURATION_MS (120 * 1000)
 
 struct state state;
 struct settings settings;
