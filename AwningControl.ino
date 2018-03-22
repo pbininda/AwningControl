@@ -4,6 +4,7 @@
 #include "state.h"
 #include "persistence.h"
 #include "relais.h"
+#include "digin.h"
 
 const bool DEBUG_TIMING = 0;
 
@@ -12,6 +13,7 @@ void loop() {
   static const int tickResolution = 1000;
   handleWiFi();
   handleServer();
+  handleDigin();
   updateState();
   handleRelais();
   handleOta();
@@ -36,6 +38,7 @@ void setup() {
   readSettings();
   initState();
   initRelais();
+  initDigin();
 }
 
 
