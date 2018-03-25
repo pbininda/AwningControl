@@ -40,7 +40,7 @@ fs.readFile(inFile, 'utf8', function (err,data) {
         def = def.trim();
         //more extraneous spaces - possible bad results, needs to be checked
         //def = def.replace(/(\w)\s(\W)|(\W)\s(\w)|(\W)\s(\W)/g, '$1$2$3$4$5$6');
-        def = def.replace(/(\w)\s(\W)|(\W)\s(\w)/g, '$1$2$3$4');
+        //def = def.replace(/(\w)\s(\W)|(\W)\s(\w)/g, '$1$2$3$4');
         //escape double quotes
         def = def.replace(/\\([\s\S])|(")/g, "\\$1$2");
 

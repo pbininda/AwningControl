@@ -10,9 +10,6 @@
             .c {
                 text-align:center;
             }
-            div,input {
-                padding:5px;font-size:1em;
-            }
             input {
                 width:55%;
             }
@@ -23,14 +20,14 @@
                 text-align:center;
                 font-family:verdana;
             }
-            button {
+            button, #current-container {
                 border:0;
                 border-radius:0.3rem;
                 background-color:#1fa3ec;
                 color:#fff;
                 line-height:2.4rem;
                 font-size:1.2rem;
-                width:85%;
+                width:100%;
                 outline-style: none;
                 margin-top: 1.2rem;
                 margin-bottom: 1.2rem;
@@ -48,6 +45,28 @@
             }
             #extras.hidden {
                 display: none;
+            }
+            #current-container {
+                width: 100%;
+                border: 2px solid #1fa3ec;
+                background: white;
+                box-sizing: border-box;
+            }
+            #current-container span {
+                float: left;
+                position: static;
+                width: 100%;
+                text-shadow: -1px -1px 10px #41ec1f, 1px -1px 10px #41ec1f, -1px 1px 10px #41ec1f, 1px 1px 10px #41ec1f;  
+            }
+            #current-level {
+                background: #41ec1f;
+                height:2.4rem;
+                transition: width 2.2s linear;
+            }
+            body {
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
             }
         </style>
 
@@ -79,7 +98,7 @@
                 sendState();
             }
             function onSetClicked() {
-                currentState.settings.maxOnDurationMs = document.getElementById('settings.max_on_duration_ms').value;
+                currentState.settings.maxOnDurationMs = document.getElementById('settings_max_on_duration_ms2').value;
                 sendState();
             }
             function onExtrasChanged() {
@@ -98,8 +117,12 @@
             }
 
             function setClass(sel, cls) {
+                setAttribute(sel, 'class', cls);
+            }
+
+            function setAttribute(sel, atr, val) {
                 let el = document.querySelector(sel);
-                el.setAttribute('class', cls);
+                el.setAttribute(atr, val);
             }
 
             function handleResponse(response) {
@@ -108,9 +131,12 @@
                 setText('#state_open_on', response.state.openOn ? 'On' : 'Off');
                 setText('#state_close_on', response.state.closeOn ? 'On' : 'Off');
                 setText('#settings_max_on_duration_ms', response.settings.maxOnDurationMs);
+                setAttribute('#settings_max_on_duration_ms2', 'value', response.settings.maxOnDurationMs);
                 setText('#state_tick', response.state.tick);
                 setText('#state_now', response.state.now);
                 setText('#current_pos', response.state.currentPos);
+                setText('#current-level-text', `${Math.round(response.state.currentPos / 1000)}%`);
+                setAttribute('#current-level', 'style', `width: ${response.state.currentPos / 1000}%;`);
             }
 
             function sendState() {
@@ -164,6 +190,15 @@
     <body>
         <div id="main">
             <p>
+                <div id="durrent-outer">
+                    <div id="current-container">
+                        <span id="current-level-text">
+                            {{state.current_pos_pct}}%
+                        </span>
+                        <div id="current-level" style="width: {{state.current_pos_pct}}%;">
+                        </div>
+                    </div>
+                </div>
                 <button id="button_close_on" onclick="onCloseClicked()">Close</button><br>
                 <button id="button_stop" onclick="onStopClicked()">Stop</button><br>
                 <button id="button_open_on" onclick="onOpenClicked()">Open</button>
@@ -174,7 +209,7 @@
         </div>
         <div id="extras" class="hidden">
             <p>
-                <label>max on ms: </label><input id="settings.max_on_duration_ms" type="number" min="0" max="20000" value="{{settings.max_on_duration_ms}}">
+                <label>max on ms: </label><input id="settings_max_on_duration_ms2" type="number" min="0" max="20000" value="{{settings.max_on_duration_ms}}">
                 <button onclick="onSetClicked()">Set</button>
             </p>
             <p>
@@ -191,5 +226,3 @@
     </body>
 </html>
 <!-- /HTTP_MAIN -->
-
-          
