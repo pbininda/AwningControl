@@ -198,6 +198,7 @@ void handleApiPost() {
     uint32_t maxOn = jsSettings["maxOnDurationMs"];
     if (maxOn != 0) {
       settings.max_on_duration_ms = maxOn;
+      writeSettings();
     }
   }
   sendJsonResult("\"OK\"");
