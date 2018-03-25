@@ -3,12 +3,27 @@
 
 #define MAX_ON_DURATION_MS (120 * 1000)
 
+const int32 POS_SCALE = 100000;
+const int32 POS_SCALE_OVER = POS_SCALE + POS_SCALE / 10;
+
 struct state state;
 struct settings settings;
 
 void updateState() {
   state.now = millis();
   state.tick++;
+  if (state.open_on) {
+    state.current_pos = state.last_start_pos + (state.now - state.last_operation_start_time) * POS_SCALE_OVER / settings.max_on_duration_ms;
+    if (state.current_pos > POS_SCALE) {
+      state.current_pos = POS_SCALE;
+    }
+  }
+  else if (state.close_on) {
+    state.current_pos = state.last_start_pos - (state.now - state.last_operation_start_time) * POS_SCALE_OVER / settings.max_on_duration_ms;
+    if (state.current_pos < 0) {
+      state.current_pos = 0;
+    }
+  }
   if (state.now >= state.open_off_time) {
     cancel_open();
   }
@@ -47,6 +62,8 @@ time_t target_time(uint32_t duration_ms) {
 void trigger_open(uint32_t duration_ms) {
   state.open_off_time = target_time(duration_ms);
   state.open_on = true;
+  state.last_start_pos = state.current_pos;
+  state.last_operation_start_time = state.now;
   Serial.println("trigger open");
   cancel_close();
 }
@@ -54,6 +71,8 @@ void trigger_open(uint32_t duration_ms) {
 void trigger_close(uint32_t duration_ms) {
   state.close_off_time = target_time(duration_ms);
   state.close_on = true;
+  state.last_start_pos = state.current_pos;
+  state.last_operation_start_time = state.now;
   Serial.println("trigger close");
   cancel_open();
 }

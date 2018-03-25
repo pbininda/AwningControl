@@ -107,6 +107,7 @@
                 setText('#settings_max_on_duration_ms', response.settings.maxOnDurationMs);
                 setText('#state_tick', response.state.tick);
                 setText('#state_now', response.state.now);
+                setText('#current_pos', response.state.currentPos);
             }
 
             function sendState() {
@@ -180,6 +181,7 @@
             <p>Closing: <span id="state_close_on">{{state.close_on}}</span></p>
             <p>Max On: <span id="settings_max_on_duration_ms">{{settings.max_on_duration_ms}}</span>ms</p>
             <p>Tick: <span id="state_tick">{{state.tick}}</span></p>
+            <p>Current: <span id="current_pos">{{state.current_pos}}</span></p>
             <p>Now:  <span id="state_now">{{state.now}}</span></p>
             <p>To reset to factory defaults, load /reset</p>
         </div>

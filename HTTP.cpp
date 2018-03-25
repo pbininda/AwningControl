@@ -39,6 +39,7 @@ String statusBody() {
   res += "<p>Opening: " + String(state.open_on) + "</p>";
   res += "<p>Closing: " + String(state.close_on) + "</p>";
   res += "<p>Max On:  " + String(settings.max_on_duration_ms) + "ms</p>";
+  res += "<p>Current:  " + String(state.current_pos) + "<p>";
   res += "<p>Tick: " + String(state.tick) + "</p>";
   res += "<p>Now:  " + String(state.now) + "</p>";
   return res;
@@ -138,6 +139,7 @@ String index() {
   res.replace("{{settings.max_on_duration_ms}}", String(settings.max_on_duration_ms));
   res.replace("{{state.tick}}", String(state.tick));
   res.replace("{{state.now}}", String(state.now));
+  res.replace("{{state.current_pos}}", String(state.current_pos));
   return res;
 }
 
@@ -168,6 +170,7 @@ void handleApiGet() {
   jsState["closeOn"] = state.close_on;
   jsState["tick"] = state.tick;
   jsState["now"] = state.now;
+  jsState["currentPos"] = state.current_pos;
   jsSettings["maxOnDurationMs"] = settings.max_on_duration_ms;
   String jsonString;
   jsRoot.printTo(jsonString);
