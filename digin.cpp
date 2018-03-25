@@ -16,7 +16,7 @@ void handleDigin() {
     static time_t last_none = 0;
     static time_t last_one = 0;
     time_t now = millis();
-    if ((cl || op) && now > last_one + 1000) {
+    if ((cl || op) && now > last_one + 800) {
         if (state.open_on || state.close_on) {
             cancel_close();
             cancel_open();
