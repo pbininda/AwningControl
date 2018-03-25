@@ -199,9 +199,9 @@
                         </div>
                     </div>
                 </div>
-                <button id="button_close_on" onclick="onCloseClicked()">Close</button><br>
+                <button id="button_close_on" onclick="onCloseClicked()">Zu</button><br>
                 <button id="button_stop" onclick="onStopClicked()">Stop</button><br>
-                <button id="button_open_on" onclick="onOpenClicked()">Open</button>
+                <button id="button_open_on" onclick="onOpenClicked()">Auf</button>
             </p>
         </div>
         <div id="toggle">
@@ -209,19 +209,19 @@
         </div>
         <div id="extras" class="hidden">
             <p>
-                <label>max on ms: </label><input id="settings_max_on_duration_ms2" type="number" min="0" max="20000" value="{{settings.max_on_duration_ms}}">
-                <button onclick="onSetClicked()">Set</button>
+                <label>max ein ms: </label><input id="settings_max_on_duration_ms2" type="number" min="0" max="20000" value="{{settings.max_on_duration_ms}}">
+                <button onclick="onSetClicked()">Setzen</button>
             </p>
             <p>
-                <a href="/spa">Reload</a>
+                <a href="/spa">Neu Laden</a>
             </p>
-            <p>Opening: <span id="state_open_on">{{state.open_on}}</span></p>
-            <p>Closing: <span id="state_close_on">{{state.close_on}}</span></p>
-            <p>Max On: <span id="settings_max_on_duration_ms">{{settings.max_on_duration_ms}}</span>ms</p>
+            <p>&Ouml;ffnen: <span id="state_open_on">{{state.open_on}}</span></p>
+            <p>Schlie&szlig;en: <span id="state_close_on">{{state.close_on}}</span></p>
+            <p>Max Ein: <span id="settings_max_on_duration_ms">{{settings.max_on_duration_ms}}</span>ms</p>
             <p>Tick: <span id="state_tick">{{state.tick}}</span></p>
-            <p>Current: <span id="current_pos">{{state.current_pos}}</span></p>
-            <p>Now:  <span id="state_now">{{state.now}}</span></p>
-            <p>To reset to factory defaults, load /reset</p>
+            <p>Aktuell: <span id="current_pos">{{state.current_pos}}</span></p>
+            <p>Jetzt:  <span id="state_now">{{state.now}}</span></p>
+            <p>F&uuml;er Werkseinstellunge: /reset laden</p>
         </div>
     </body>
 </html>
