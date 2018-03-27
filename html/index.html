@@ -71,13 +71,16 @@
         </style>
 
         <script type="text/javascript">
-
+        (function() {
             let currentState = {
                 state: {},
                 settings: {}
             };
             let sendingState = false;
             let targetApi = '';
+            let timer = undefined;
+            let requesting = false;
+
             if (window.location.protocol === 'file:') {
                 targetApi = 'http://markise';
             }
@@ -176,15 +179,45 @@
 
             function periodicReload() {
                 if (!sendingState) {
+                    requesting = true;
                     reload(function() {
-                        setTimeout(periodicReload, 2000);
+                        requesting = false;
+                        maybeReload(2000);
                     });
                 } else {
-                    setTimeout(periodicReload, 2000);
+                    maybeReload(2000);
                 }
             }
 
-            periodicReload();
+            function maybeReload(delay) {
+                if (isVisible()) {
+                    timer = setTimeout(periodicReload, 2000);
+                }
+            }
+
+            function isVisible() {
+                return document.visibilityState === 'visible';
+            }
+
+            function enOrDisable() {
+                if (isVisible()) {
+                    if (!(timer || requesting)) {
+                        periodicReload();
+                    } 
+                } else {
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = undefined;
+                    } 
+                }
+            }
+
+            document.addEventListener('visibilitychange', function(e) {
+                enOrDisable();
+            });
+
+            enOrDisable();
+        })();
         </script>
     </head>
     <body>
