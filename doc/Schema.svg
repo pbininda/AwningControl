@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7071068"
-     inkscape:cx="567.22113"
-     inkscape:cy="245.44995"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="583.36566"
+     inkscape:cy="489.73229"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3819"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1057"
@@ -90,18 +90,26 @@
            sodipodi:role="line">braun</tspan></text>
       <text
          id="text2987-4"
-         y="493.68411"
-         x="314.32162"
+         y="481.6633"
+         x="275.43076"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:Sans;-inkscape-font-specification:Sans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
            id="tspan2991-8"
-           y="493.68411"
-           x="314.32162"
-           sodipodi:role="line">3-adrig</tspan><tspan
+           y="481.6633"
+           x="275.43076"
+           sodipodi:role="line">5-adrig</tspan><tspan
            id="tspan4185"
-           y="508.68411"
-           x="314.32162"
-           sodipodi:role="line">braun,blau,gelbgrün</tspan></text>
+           y="496.6633"
+           x="275.43076"
+           sodipodi:role="line">braun: phase mechanisch</tspan><tspan
+           y="511.66327"
+           x="275.43076"
+           sodipodi:role="line"
+           id="tspan88">schwarz: phase elektronisch,</tspan><tspan
+           y="526.66327"
+           x="275.43076"
+           sodipodi:role="line"
+           id="tspan86">blau,gelbgrün</tspan></text>
       <g
          transform="translate(0.70710676,16.949747)"
          id="g4160">
@@ -175,7 +183,7 @@
            x="682.85718"
            sodipodi:role="line">braun/schwarz/blau/gelbgrün</tspan></text>
       <g
-         transform="translate(9,14)"
+         transform="translate(9,34)"
          id="g3986">
         <rect
            style="fill:#9b2deb;fill-opacity:1;stroke:#000000;stroke-opacity:1"
@@ -212,15 +220,19 @@
            id="tspan2991-0-6"
            y="447.01843"
            x="518.39844"
-           sodipodi:role="line">2-adrig</tspan><tspan
-           id="tspan4287"
+           sodipodi:role="line">4-adrig</tspan><tspan
+           id="tspan4187"
            y="462.01843"
            x="518.39844"
-           sodipodi:role="line">Phase * 2,</tspan><tspan
-           id="tspan4187"
+           sodipodi:role="line">braun: phase eingang</tspan><tspan
            y="477.01843"
            x="518.39844"
-           sodipodi:role="line">schwarz,braun</tspan></text>
+           sodipodi:role="line"
+           id="tspan92">schwarz: phase auf</tspan><tspan
+           y="492.01843"
+           x="518.39844"
+           sodipodi:role="line"
+           id="tspan94">grau: phase zu</tspan></text>
       <g
          transform="translate(-24)"
          id="g4004">
@@ -261,7 +273,7 @@
          inkscape:connector-curvature="0"
          inkscape:connector-type="polyline"
          id="path3993"
-         d="M 598,508.66986 809.70711,406.16905"
+         d="M 598,523.17547 809.70711,406.16905"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:connection-end-point="d4"
@@ -281,17 +293,7 @@
          inkscape:connector-curvature="0"
          inkscape:connector-type="polyline"
          id="path4014"
-         d="m 547,479.86218 v -47"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      <path
-         inkscape:connection-start="#g4004"
-         inkscape:connection-start-point="d4"
-         inkscape:connection-end-point="d4"
-         inkscape:connection-end="#g3997"
-         inkscape:connector-curvature="0"
-         inkscape:connector-type="polyline"
-         id="path4016"
-         d="M 291.86078,382.16843 496,379.92313"
+         d="m 547,499.86218 v -67"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:connection-start="#g4004"
@@ -309,7 +311,7 @@
          inkscape:connector-curvature="0"
          inkscape:connector-type="polyline"
          id="path4020"
-         d="M 291.86078,407.82342 496,508.26813"
+         d="M 291.86078,410.82206 496,523.2695"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
     <g
@@ -349,12 +351,6 @@
          id="path4148"
          d="m 689,987.03063 -2.25,-283.05386 h 14.17678 l 0.0732,-12.61459"
          style="fill:none;stroke:#fe3f3f;stroke-width:1.88173831;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         sodipodi:nodetypes="cccc"
-         inkscape:connector-curvature="0"
-         id="path4150"
-         d="m 700.82322,678.12995 0.10358,-4.59099 -18.42678,0.0732 v 3.69454"
-         style="fill:none;stroke:#fe3f3f;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccc"
          inkscape:connector-curvature="0"
@@ -402,11 +398,19 @@
            y="858.86218"
            x="825.34796"
            id="tspan4199"
-           sodipodi:role="line">2-adrig</tspan><tspan
+           sodipodi:role="line">4-adrig</tspan><tspan
            id="tspan4201"
            y="873.86218"
            x="825.34796"
-           sodipodi:role="line">schwarz/braun</tspan></text>
+           sodipodi:role="line">braun: phase eingang</tspan><tspan
+           y="888.86218"
+           x="825.34796"
+           sodipodi:role="line"
+           id="tspan100">schwarz: phase auf</tspan><tspan
+           y="903.86218"
+           x="825.34796"
+           sodipodi:role="line"
+           id="tspan102">grau: phase zu</tspan></text>
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
@@ -422,37 +426,25 @@
            y="676.44519"
            x="825.19562"
            id="tspan4191-5"
-           sodipodi:role="line">3-adrig</tspan><tspan
+           sodipodi:role="line">5-adrig</tspan><tspan
            id="tspan4193-2"
            y="691.44519"
            x="825.19562"
-           sodipodi:role="line">braun/blau/gelbgrün</tspan></text>
+           sodipodi:role="line">braun: phase mechanisch</tspan><tspan
+           y="706.44519"
+           x="825.19562"
+           sodipodi:role="line"
+           id="tspan96">schwarz: phase elektronisch</tspan><tspan
+           y="721.44519"
+           x="825.19562"
+           sodipodi:role="line"
+           id="tspan98">blau, gelbgrün</tspan></text>
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path4229"
          d="m 704.93001,668.73073 111.12668,16.4957"
          style="fill:none;stroke:#737ffe;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         sodipodi:nodetypes="cc"
-         inkscape:connector-curvature="0"
-         id="path4231"
-         d="m 691.356,673.60217 127.31453,78.17061"
-         style="fill:none;stroke:#737ffe;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <text
-         id="text4233"
-         y="746.00116"
-         x="824.91437"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:Sans;-inkscape-font-specification:Sans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-         xml:space="preserve"><tspan
-           y="746.00116"
-           x="824.91437"
-           id="tspan4235"
-           sodipodi:role="line">1-adrig</tspan><tspan
-           id="tspan4237"
-           y="761.00116"
-           x="824.91437"
-           sodipodi:role="line">braun</tspan></text>
       <text
          id="text4239"
          y="615.81384"
