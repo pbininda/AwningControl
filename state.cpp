@@ -3,7 +3,7 @@
 
 #define MAX_ON_DURATION_MS (120 * 1000)
 
-const int32 POS_SCALE = 100000;
+const int32 POS_SCALE = 10000;
 const int32 POS_SCALE_OVER = POS_SCALE + POS_SCALE / 10;
 
 struct state state;

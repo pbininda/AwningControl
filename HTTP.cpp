@@ -140,7 +140,7 @@ String index() {
   res.replace("{{state.tick}}", String(state.tick));
   res.replace("{{state.now}}", String(state.now));
   res.replace("{{state.current_pos}}", String(state.current_pos));
-  res.replace("{{state.current_pos_pct}}", String(state.current_pos / 1000));
+  res.replace("{{state.current_pos_pct}}", String(state.current_pos / 100));
   return res;
 }
 

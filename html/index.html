@@ -71,7 +71,6 @@
         </style>
 
         <script type="text/javascript">
-        (function() {
             let currentState = {
                 state: {},
                 settings: {}
@@ -138,8 +137,8 @@
                 setText('#state_tick', response.state.tick);
                 setText('#state_now', response.state.now);
                 setText('#current_pos', response.state.currentPos);
-                setText('#current-level-text', `${Math.round(response.state.currentPos / 1000)}%`);
-                setAttribute('#current-level', 'style', `width: ${response.state.currentPos / 1000}%;`);
+                setText('#current-level-text', `${Math.round(response.state.currentPos / 100)}%`);
+                setAttribute('#current-level', 'style', `width: ${response.state.currentPos / 100}%;`);
             }
 
             function sendState() {
@@ -217,7 +216,6 @@
             });
 
             enOrDisable();
-        })();
         </script>
     </head>
     <body>
