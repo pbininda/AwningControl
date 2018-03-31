@@ -2,8 +2,8 @@
 #include "state.h"
 #include "relais.h"
 
-#define OPEN_PIN 4
-#define CLOSE_PIN 14
+#define OPEN_PIN 14
+#define CLOSE_PIN 4
 
 #define MIN_OFF_TIME 600
 
