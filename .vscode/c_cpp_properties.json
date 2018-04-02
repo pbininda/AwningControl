@@ -75,7 +75,9 @@
                 ],
                 "limitSymbolsToIncludedHeaders": false,
                 "databaseFilename": ""
-            }
+            },
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         },
         {
             "name": "Arduino",
